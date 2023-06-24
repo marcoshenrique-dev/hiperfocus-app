@@ -16,12 +16,27 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+html, body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.CircularProgressbar-path {
+  stroke: red;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #EBECF0;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  background: #EBECF0;
+}
+::-webkit-scrollbar-thumb {
+  background: #BEC3CE;
+  border-radius: 10px;
 }
