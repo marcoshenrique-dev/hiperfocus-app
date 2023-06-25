@@ -1,15 +1,17 @@
 'use client'
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTheme } from "next-themes";
 import {MoonIcon, SunIcon, ArrowPathIcon} from '@heroicons/react/24/solid';
 
 import { Tag } from '../Tag';
 import { ButtonRounded } from '../Button';
+import { tasksContext } from '@/hooks/TasksContext';
 
 export const Menu = () => {
   
   const {theme, setTheme} = useTheme();
+  const {resetTasks} = useContext(tasksContext);
 
   const toogleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -24,7 +26,7 @@ export const Menu = () => {
       </div>
 
       <div className='flex gap-2'>
-          <ButtonRounded onClick={() => {}} variant='outline'><ArrowPathIcon className="w-4 h-4"/></ButtonRounded>
+          <ButtonRounded onClick={resetTasks} variant='outline'><ArrowPathIcon className="w-4 h-4"/></ButtonRounded>
           <ButtonRounded onClick={toogleTheme} variant='outline'>{
             theme === 'light' ? (
               <MoonIcon className="w-4 h-4"/>

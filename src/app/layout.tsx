@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { Menu } from '@/components'
 
 import Providers from '@/providers/ThemeProvider'
+import { TasksProvider } from '@/hooks/TasksContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       
-      <body className={inter.className}>
+      <body className={`${inter.className} overflow-y-auto sm:overflow-hidden`}>
       <Providers>
-        <Menu />
+        <TasksProvider>
+          <Menu />
           {children}
+        </TasksProvider>
        </Providers>
       </body>
       

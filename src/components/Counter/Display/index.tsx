@@ -1,14 +1,15 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import 'react-circular-progressbar/dist/styles.css';
 
 type DisplayProps = {
   startTime: number;
+  id: string;
   isPlaying: boolean;
-  setIsPlaying: Dispatch<SetStateAction<boolean>>;
+  setIsPlaying(id: string, value: boolean): void;
 }
 
-export const Display = ({startTime, isPlaying, setIsPlaying}: DisplayProps) => {
+export const Display = ({startTime, isPlaying, setIsPlaying, id}: DisplayProps) => {
   const [remainingTime, setRemainingTime] = useState(startTime);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export const Display = ({startTime, isPlaying, setIsPlaying}: DisplayProps) => {
        
       setRemainingTime((prevTime) => {
         if (prevTime === 0) {
-          setIsPlaying(false);
+          setIsPlaying(id, false);
           clearInterval(timer);
           return 0;
         }
@@ -34,7 +35,7 @@ export const Display = ({startTime, isPlaying, setIsPlaying}: DisplayProps) => {
     }
 
     return () => clearInterval(timer);
-  }, [isPlaying, setIsPlaying]);
+  }, [isPlaying, setIsPlaying, id]);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -48,6 +49,8 @@ export const Display = ({startTime, isPlaying, setIsPlaying}: DisplayProps) => {
   };
 
   return (
+    <>
+ 
   <CircularProgressbarWithChildren styles={
     {
       path: {
@@ -61,6 +64,7 @@ export const Display = ({startTime, isPlaying, setIsPlaying}: DisplayProps) => {
   } value={parseInt(calculateProgress())} >
     <h1 className="font-bold text-4xl">{formatTime(remainingTime)}</h1>
   </CircularProgressbarWithChildren>
+  </>
   );
 };
 
