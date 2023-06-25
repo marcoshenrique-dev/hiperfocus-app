@@ -7,6 +7,7 @@ import {MoonIcon, SunIcon, ArrowPathIcon} from '@heroicons/react/24/solid';
 import { Tag } from '../Tag';
 import { ButtonRounded } from '../Button';
 import { tasksContext } from '@/hooks/TasksContext';
+import Link from 'next/link';
 
 export const Menu = () => {
   
@@ -22,7 +23,9 @@ export const Menu = () => {
 
       <div className='flex flex-row'>
         <h1 className='mr-2 text-base sm:text-xl font-bold text-black dark:text-white'>Hiperfocus App</h1>
-        <Tag bgColor='yellow-400'>By MHDEV</Tag>
+        <Link className='flex' href='https://www.linkedin.com/in/marcos-henrique-developer/'>
+          <Tag bgColor='yellow-400'>By MHDEV</Tag>
+        </Link>
       </div>
 
       <div className='flex gap-2'>

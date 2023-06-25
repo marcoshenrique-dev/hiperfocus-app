@@ -3,7 +3,7 @@
 import { Task } from '@/types/Task';
 import {v4} from 'uuid';
 
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 type UpdateStatusTask = {
   id: string;
@@ -27,6 +27,10 @@ export const TasksProvider = ({ children }: any) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [taskRunning, setTaskRunning] = useState<Task | null>(null);
 
+  useEffect(() => {
+    setTasks(JSON.parse(localStorage.getItem('@hiperfocus:tasks') || '[]'));
+  }, []);
+
   function addTask(description: string) {
 
     if(description === '') {
@@ -43,12 +47,16 @@ export const TasksProvider = ({ children }: any) => {
       running: false,
     });
 
+    localStorage.setItem('@hiperfocus:tasks', JSON.stringify(updateTasks));
+
     setTasks(updateTasks);
   }
 
   function resetTasks() {
     setTasks([]);
     setTaskRunning(null);
+
+    localStorage.removeItem('@hiperfocus:tasks');
   }
 
   function updateStatus({id, checked, running}: UpdateStatusTask) {
@@ -68,6 +76,8 @@ export const TasksProvider = ({ children }: any) => {
      if(running) setTaskRunning(tasksUpdate[taskIndex])
      else setTaskRunning(null);
    }
+
+   localStorage.setItem('@hiperfocus:tasks', JSON.stringify(tasksUpdate));
   
    setTasks(tasksUpdate);
   }
@@ -83,6 +93,8 @@ export const TasksProvider = ({ children }: any) => {
     }
 
     tasksUpdate.splice(taskIndex, 1);
+
+    localStorage.setItem('@hiperfocus:tasks', JSON.stringify(tasksUpdate));
 
     setTasks(tasksUpdate);
 
