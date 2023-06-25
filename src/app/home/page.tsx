@@ -22,7 +22,7 @@ export default async function Home() {
       </section>
 
       <section className="fixed bottom-0 pb-2 pt-2 left-0 sm:hidden flex flex-col justify-center items-center w-full bg-slate-50/80 dark:bg-slate-950/50 backdrop-blur-sm">
-        <Link className='flex' href='https://www.linkedin.com/in/marcos-henrique-developer/'>
+        <Link className='flex' href='https://www.buymeacoffee.com/mhdev'>
         <p className="font-bold">Made with 💙 by MHDEV</p>
         </Link>
       </section>

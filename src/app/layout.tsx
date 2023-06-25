@@ -4,6 +4,7 @@ import { Menu } from '@/components'
 
 import Providers from '@/providers/ThemeProvider'
 import { TasksProvider } from '@/hooks/TasksContext'
+import { LanguageProvider } from '@/hooks/LanguageContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,10 +22,12 @@ export default function RootLayout({
       
       <body className={`${inter.className} overflow-y-auto sm:overflow-hidden`}>
       <Providers>
-        <TasksProvider>
-          <Menu />
-          {children}
-        </TasksProvider>
+        <LanguageProvider>
+          <TasksProvider>
+            <Menu />
+            {children}
+          </TasksProvider>
+        </LanguageProvider>
        </Providers>
       </body>
       

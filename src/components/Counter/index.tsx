@@ -1,6 +1,8 @@
 'use client'
 
+import { languageContext } from "@/hooks/LanguageContext";
 import { tasksContext } from "@/hooks/TasksContext";
+import homeTranslation from "@/translations/home";
 import { PauseIcon, PlayIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
 import { useContext, useEffect, useState } from "react";
@@ -15,6 +17,7 @@ export const Counter = () => {
   const [startTime, setStartTime] = useState(60 * 60);
 
   const {setTaskRunning, taskRunning, updateStatus} = useContext(tasksContext);
+  const {language} = useContext(languageContext);
 
   useEffect(() => {
     setStartTime(time === '1h' ? 60 * 60 : 60 * 30);
@@ -59,12 +62,17 @@ export const Counter = () => {
 
         <Display id={taskRunning.id} isPlaying={taskRunning.running} setIsPlaying={setRunning} startTime={startTime}/>
 
-        <h2 className="text-lg font-semibold mt-4">Stay focused</h2>
-        <h1 className="text-xl font-medium mt-1">Running <span className="text-xl font-bold">{taskRunning.description}</span></h1>
+        <h2 className="text-lg font-semibold mt-4">{homeTranslation[language].counter.message}</h2>
+        <h1 className="text-xl font-medium mt-1">{homeTranslation[language].counter.task} <span className="text-xl font-bold">{taskRunning.description}</span></h1>
 
         <div className="flex flex-row gap-x-10 mt-8">
-          <Button onClick={() => setRunning(taskRunning.id, !taskRunning.running)} variant="primary" rightIcon={taskRunning.running ? <PauseIcon className="h-5 w-5"/> : <PlayIcon  className="h-5 w-5"/>}>{taskRunning.running ? 'Pause': 'Start'}</Button>
-          <Button onClick={cancelTask}  variant="red" rightIcon={<XMarkIcon className="h-5 w-5"/>}>Cancel</Button>
+          <Button onClick={() => setRunning(taskRunning.id, !taskRunning.running)} variant="primary" rightIcon={taskRunning.running ? <PauseIcon className="h-5 w-5"/> : <PlayIcon  className="h-5 w-5"/>}>
+            {taskRunning.running ? 
+              homeTranslation[language].counter.pause 
+              : homeTranslation[language].counter.start
+            }
+            </Button>
+          <Button onClick={cancelTask}  variant="red" rightIcon={<XMarkIcon className="h-5 w-5"/>}>{homeTranslation[language].counter.cancel}</Button>
           </div>
         </>
       ): (

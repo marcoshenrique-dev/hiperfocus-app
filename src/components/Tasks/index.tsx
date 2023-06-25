@@ -1,7 +1,12 @@
 'use client'
 
+import { languageContext } from "@/hooks/LanguageContext";
 import { tasksContext } from "@/hooks/TasksContext";
-import { useContext, useEffect } from "react";
+
+import homeTranslation from "@/translations/home";
+
+import { useContext } from "react";
+
 import { EmptyTasks } from "../Empty";
 import { Header } from "./Header";
 import { Task } from "./Task";
@@ -9,6 +14,7 @@ import { Task } from "./Task";
 export const Tasks = () => {
 
   const {addTask, tasks} = useContext(tasksContext);
+  const {language} = useContext(languageContext);
 
   return (
     <div  className="px-4 overflow-y-auto">
@@ -24,14 +30,14 @@ export const Tasks = () => {
       ): (
       <>
         <section>
-          <h3 className="mt-5 font-bold mb-2">To do 🕑</h3>
+          <h3 className="mt-5 font-bold mb-2">{homeTranslation[language].tasks.todo}</h3>
 
           {tasks.filter(item => !item.checked).map(item => (
                   <Task checked={item.checked} description={item.description} running={item.running} id={item.id} key={item.id} />
           ))}
         </section>
         <section className="pb-4">
-          <h3 className="mt-5 font-bold mb-2">Finished ✅</h3>
+          <h3 className="mt-5 font-bold mb-2">{homeTranslation[language].tasks.finished}</h3>
 
             {tasks.filter(item => item.checked).map(item => (
                     <Task checked={item.checked} description={item.description} running={item.running} id={item.id} key={item.id} />
