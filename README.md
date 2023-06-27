@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![cover (1).jpg](resources/cover_(1).jpg)
 
-## Getting Started
+# The hiperfocus app⚡ - web and mobile responsive
+---
 
-First, run the development server:
+This project was created based in the [Chris Bailey`s Hyper focus book](https://www.amazon.com.br/Hiperfoco-Como-trabalhar-menos-render/dp/8557173040), which demonstrates very interesting concepts such as attentional space, ways to focus more and especially the state of hyperfocus.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+From this idea, I developed a website capable of monitoring the focus time on each task. Where the user registers his tasks for the day and starts them using the timer present in the application .
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> I developed this project just as a way of studying, but if you want to use it, just access the link: [https://hiperfocus-app.vercel.app](https://hiperfocus-app.vercel.app/)
+> 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tecnologies
 
-## Learn More
+- Next 13 (using concepts of react server, client components and app router)
+- Tailwind CSS (to style the application)
+- Context Api (to tasks and language switcher)
+- Headless Ui (to accordion in mobile version)
+- Heroicons
+- Typescript
+- Next-themes (to switch themes)
+- Local storage (to save tasks in browser)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## F**unctionalities**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Task manegment
+- Time control
+- Theme switcher ☀️ 🌚
+- Empty states
+- Language switcher **[🇧🇷](https://emojipedia.org/pt/bandeira-brasil/)** 🇺🇸
 
-## Deploy on Vercel
+---
+## Screenshots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Captura de tela de 2023-06-27 16-03-48.png](resources/Captura_de_tela_de_2023-06-27_16-03-48.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Captura de tela de 2023-06-27 16-03-20.png](resources/Captura_de_tela_de_2023-06-27_16-03-20.png)
+
+![Captura de tela de 2023-06-27 16-05-42.png](resources/Captura_de_tela_de_2023-06-27_16-05-42.png)
